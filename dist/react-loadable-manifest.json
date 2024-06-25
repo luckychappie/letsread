@@ -1,0 +1,16 @@
+{
+  "app\\pages\\book\\bookDetail\\page.tsx -> @/app/components/PdfViewer": {
+    "id": "app\\pages\\book\\bookDetail\\page.tsx -> @/app/components/PdfViewer",
+    "files": [
+      "static/css/_app-pages-browser_src_app_components_PdfViewer_tsx-_f2f71.css",
+      "static/chunks/_app-pages-browser_src_app_components_PdfViewer_tsx-_f2f71.js"
+    ]
+  },
+  "app\\pages\\book\\readBook\\page.tsx -> @/app/components/PdfViewer": {
+    "id": "app\\pages\\book\\readBook\\page.tsx -> @/app/components/PdfViewer",
+    "files": [
+      "static/css/_app-pages-browser_src_app_components_PdfViewer_tsx-_f2f70.css",
+      "static/chunks/_app-pages-browser_src_app_components_PdfViewer_tsx-_f2f70.js"
+    ]
+  }
+}

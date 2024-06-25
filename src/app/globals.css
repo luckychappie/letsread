@@ -1,0 +1,113 @@
+:root {
+  --pink: #DE6F90;
+  --pinky: #EFAFB9;
+  --lightPink: #F8DBDF;
+  --pinkOpacity: #EFAFB9;
+  --green: #7C9851;
+  --mutedColor: #E8E8E8;
+
+}
+
+body {
+  font-size: 12px !important;
+}
+
+a {
+  color: white;
+  text-decoration: none !important;
+}
+
+.main-content{
+  display: flex;
+  background-color: white;
+  margin-top: 35px;
+  justify-content: center;
+}
+
+.appBar {
+  background-color: var(--lightPink) !important;
+  height: 38px;
+  align-items: center;
+  vertical-align: middle;
+}
+
+.logo img{
+  margin-top: 5px;
+  height: 80%;
+  width: 100%;
+}
+
+.appToolbar, .MuiToolbar-root{
+  min-height: 38px !important;
+}
+
+.sidebar-icon{
+  margin: 10px 5px 3px 5px;
+  width: 90px;
+}
+
+.content {
+  width: 100%;
+}
+
+.text-small{
+  font-size: 12px;
+}
+.mui-theme-518kzi-MuiListItemSecondaryAction-root {
+  right: 7px !important;
+}
+.book-list-item {
+  padding-left: 7px !important;
+}
+
+.movie-title{
+  font-size: 15px;
+  color: var(--pink);
+  margin: 3px 0px;
+}
+
+.movie-info{
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  margin-left: 15px;
+  line-height: 20px;
+}
+
+.text-pink{
+  color:  var(--pink);
+}
+
+.text-green{
+  color:  var(--green);
+}
+
+.text-dark{
+  color: #423f3f;
+}
+
+.text-muted{
+  color: rgb(171, 168, 168);
+}
+
+.w-100{
+  width: 100% !important;
+}
+canvas, .react-pdf__Page__annotations{
+  width: 100% !important;
+  height: auto !important;
+}
+@media (min-width: 768px) {
+  
+  .content{
+    width: 800px !important;
+    /* background-color: var(--mutedColor) !important; */
+  }
+  .mui-theme-1wgh9dv-MuiModal-root-MuiDrawer-root .MuiDrawer-paper {
+    width: 20% !important;
+  }
+  .filter-box{
+    display: flex;
+    justify-content: center;
+  }
+}

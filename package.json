@@ -1,0 +1,42 @@
+{
+  "name": "movielink",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build ",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@capacitor/android": "^6.1.0",
+    "@capacitor/cli": "^6.1.0",
+    "@capacitor/core": "^6.1.0",
+    "@capacitor/ios": "^6.1.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/icons-material": "^5.15.20",
+    "@mui/material": "^5.15.20",
+    "canvas": "^2.11.2",
+    "date-fns": "^3.6.0",
+    "formidable": "^3.5.1",
+    "formik": "^2.4.6",
+    "lodash": "^4.17.21",
+    "mysql2": "^3.10.1",
+    "next": "14.2.4",
+    "next-pwa": "^5.6.0",
+    "pdfjs-dist": "^4.3.136",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-pdf": "^9.0.0",
+    "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.4",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
+    "typescript": "^5"
+  }
+}
