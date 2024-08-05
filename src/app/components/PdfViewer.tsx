@@ -78,7 +78,7 @@ const PdfViewer = (props: Props) => {
 
 
   for (let i = 0; i < numPages; i++) {
-    listPage.push(<MenuItem sx={{ height: 20 }} value={i + 1}>{i + 1}</MenuItem>);
+    listPage.push(<MenuItem key={i} sx={{ height: 20 }} value={i + 1}>{i + 1}</MenuItem>);
   }
 
   const onPageLoadSuccess = (pageIndex: any) => {

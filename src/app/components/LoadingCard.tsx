@@ -2,7 +2,12 @@ import { Card, Skeleton } from '@mui/material'
 import React from 'react'
 import Loading from './Loading'
 
-export default function LoadingCard() {
+
+interface Props {
+    isSidebar?: boolean
+}
+
+export default function LoadingCard({ isSidebar }: Props) {
     return (
         <div>
             <Loading count={1} />
@@ -47,30 +52,38 @@ export default function LoadingCard() {
                     style={{ marginBottom: 6 }}
                 />
                 <Skeleton sx={{ height: 80 }} animation="wave" variant="rectangular" />
-                <Skeleton
-                    animation="wave"
-                    height={10}
-                    width="80%"
-                    style={{ marginBottom: 6 }}
-                />
-                <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
-                <Skeleton
-                    animation="wave"
-                    height={10}
-                    width="60%"
-                    style={{ marginBottom: 6 }}
-                />
-                <Skeleton
-                    animation="wave"
-                    height={10}
-                    width="80%"
-                    style={{ marginBottom: 6 }}
-                /> <Skeleton
-                    animation="wave"
-                    height={10}
-                    width="60%"
-                    style={{ marginBottom: 6 }}
-                />
+                {
+                    !isSidebar && (
+                        <>
+
+                            <Skeleton
+                                animation="wave"
+                                height={10}
+                                width="80%"
+                                style={{ marginBottom: 6 }}
+                            />
+                            <Skeleton sx={{ height: 190 }} animation="wave" variant="rectangular" />
+                            <Skeleton
+                                animation="wave"
+                                height={10}
+                                width="60%"
+                                style={{ marginBottom: 6 }}
+                            />
+                            <Skeleton
+                                animation="wave"
+                                height={10}
+                                width="80%"
+                                style={{ marginBottom: 6 }}
+                            /> <Skeleton
+                                animation="wave"
+                                height={10}
+                                width="60%"
+                                style={{ marginBottom: 6 }}
+                            />
+
+                        </>
+                    )
+                }
             </Card>
         </div>
     )

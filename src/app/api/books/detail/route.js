@@ -3,10 +3,11 @@ import connectDb from "../../../../../libs/connect_db";
 
 export async function GET(request) {
     // const { id } = params
-    const { searchParams } = new URL(request.url);
-    const id = searchParams.get('id')
+    
     
     try {
+        const { searchParams } = new URL(request.url);
+        const id = searchParams.get('id')
         const db = await connectDb.getConnection()
        
         let bookQuery = `SELECT books.*, book_categories.category_name,book_authors.author_name

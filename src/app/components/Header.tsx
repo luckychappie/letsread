@@ -10,11 +10,19 @@ import Container from '@mui/material/Container';
 import Sidebar from './Sidebar';
 import { pink } from '@mui/material/colors';
 import Link from 'next/link'
-import { Avatar, Button } from '@mui/material';
-import { Search } from '@mui/icons-material';
+import { Avatar, Button, Slide, Snackbar, useScrollTrigger } from '@mui/material';
+import { Close, Search } from '@mui/icons-material';
 import DownloadIcon from '@mui/icons-material/Download';
+import { useContextProvider } from '../context/ContextProvider';
 
-function Header() {
+interface Props {
+  window?: () => Window;
+  children: React.ReactElement;
+}
+
+
+function Header(props: Props) {
+  const { showSnackbar, snackbarMessage, setShowSnackbar } = useContextProvider()
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -42,6 +50,10 @@ function Header() {
     };
   }, []);
 
+  const handleSnackbarClose = () => {
+    setShowSnackbar(false)
+  }
+
   const handleInstallClick = async () => {
     if (deferredPrompt) {
       const promptEvent = deferredPrompt as any;
@@ -63,23 +75,37 @@ function Header() {
     return isStandalone || isIosStandalone || document.referrer.startsWith('android-app://');
   };
 
+  function HideOnScroll(props: Props) {
+    const { children, window } = props;
+  
+    const trigger = useScrollTrigger({
+      target: window ? window() : undefined,
+    });
+  
+    return (
+      <Slide appear={false} direction="down" in={!trigger}>
+        {children}
+      </Slide>
+    );
+  }
+  
 
   return (
     <Box>
-      <AppBar position="fixed" sx={{ height: 38 }} elevation={0} className='appBar'>
+      <AppBar position="fixed" sx={{ height: 38, zIndex: {md: 2000} }} elevation={0} className='appBar'>
         <Container maxWidth="xl">
           <Toolbar disableGutters sx={{ height: 38, alignItems: 'center' }} className='appToolbar'>
             <Link href="/">
               <Avatar variant="square" sx={{ width: '100%' }} className='logo' alt='Myanmar Books' src='/static/small-logo.png' />
             </Link>
             <Box sx={{ flexGrow: 1, display: { xs: 'flex' } }}></Box>
-            {
+            {/* {
               !isInstalled && (
                 <IconButton color='success' onClick={handleInstallClick} sx={{ textTransform: 'capitalize' }}>
                   <DownloadIcon />
                 </IconButton>
               )
-            }
+            } */}
 
             <Box sx={{ flexGrow: 0 }}>
               <Link href={`/`}>
@@ -102,6 +128,24 @@ function Header() {
         </Container>
       </AppBar>
       <Sidebar mobileOpen={mobileOpen} sendSidebarStatus={handleDrawerToggle} />
+
+      <Snackbar
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+        open={showSnackbar}
+        onClose={handleSnackbarClose}
+        message={snackbarMessage}
+        key={'center'}
+        action={
+          <IconButton
+            size="small"
+            aria-label="close"
+            color="inherit"
+            onClick={handleSnackbarClose}
+          >
+            <Close fontSize="small" />
+          </IconButton>
+        }
+      />
     </Box>
   );
 }

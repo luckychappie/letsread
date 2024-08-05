@@ -1,10 +1,12 @@
-import { BubbleChart } from '@mui/icons-material';
+import { BubbleChart, Message, Search } from '@mui/icons-material';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import { Box, Divider, Drawer, ImageList, ImageListItem, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import React from 'react'
 import { navItems } from '../constants/navItems';
 import { bookAdvs } from '../constants/books';
 import Link from 'next/link';
+import iconMapping from '../api/contact/iconMapping';
+import { theme } from '../../../theme/Theme';
 
 interface Props {
     window?: () => Window
@@ -30,16 +32,24 @@ export default function Sidebar(props: Props) {
             <Divider />
             <Box>
                 <List >
-                    {navItems.map((item) => (
-                        <ListItem disablePadding button component={Link} href={`${item.link}`} key={item.title}>
-                            <ListItemButton >
-                                <ListItemIcon sx={{ minWidth: 33 }}>
-                                    <LocalLibraryIcon fontSize='small' color="secondary" />
-                                </ListItemIcon>
-                                <ListItemText sx={{}} primary={item.title} />
-                            </ListItemButton>
-                        </ListItem>
-                    ))}
+                    {navItems.map((item) => 
+                        {
+                            const iconComponent = iconMapping[item.icon];
+                            return (
+
+                            <Link key={item.title} href={item.link} style={{color: '#000'}} >
+                                <ListItem disablePadding  >
+                                    <ListItemButton >
+                                        <ListItemIcon sx={{ minWidth: 33 }}>
+                                            {iconComponent && React.createElement(iconComponent,  { style: { fontSize: 20, color: theme.palette.secondary.main } })}
+                                        </ListItemIcon>
+                                        <ListItemText sx={{}} primary={item.title} />
+                                    </ListItemButton>
+                                </ListItem>
+                            </Link>
+                            )
+                        }
+                    )}
                 </List>
 
             </Box>
@@ -77,9 +87,10 @@ export default function Sidebar(props: Props) {
                     display: { xs: "block" },
                     "& .MuiDrawer-paper": {
                         boxSizing: "border-box",
-                        width: '85%',
+                        width: {xs: '85%', sm: '65%', md: '23%'},
                         bgcolor: '#F8DBDF'
                     },
+                    zIndex: 3000
                 }}
             >
                 {drawer}

@@ -4,6 +4,7 @@ import "./globals.css";
 import ThemeRegistry from "../../theme/ThemeRegistery";
 import Header from "./components/Header";
 import { Box, Card } from "@mui/material";
+import { ContextProvider } from "@/app/context/ContextProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,17 +24,19 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <ThemeRegistry options={{ key: 'mui-theme' }}>
-          <Box >
-            <Header />
-            <div className="main-content">
-              <Card elevation={0} className="content">
-                {children}
-              </Card>
+        <ContextProvider>
+          <ThemeRegistry options={{ key: 'mui-theme' }}>
+            <Box >
+              <Header />
+              <div className="main-content">
+                <Card elevation={0} className="content">
+                  {children}
+                </Card>
 
-            </div>
-          </Box>
-        </ThemeRegistry>
+              </div>
+            </Box>
+          </ThemeRegistry>
+        </ContextProvider>
       </body>
     </html>
   );

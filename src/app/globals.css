@@ -100,7 +100,7 @@ canvas, .react-pdf__Page__annotations{
 @media (min-width: 768px) {
   
   .content{
-    width: 800px !important;
+    /* width: 1100px !important; */
     /* background-color: var(--mutedColor) !important; */
   }
   .mui-theme-1wgh9dv-MuiModal-root-MuiDrawer-root .MuiDrawer-paper {

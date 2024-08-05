@@ -5,6 +5,7 @@ import StarOutlineIcon from '@mui/icons-material/StarOutline';
 import LocalLibraryRoundedIcon from '@mui/icons-material/LocalLibraryRounded';
 import Link from 'next/link';
 import { theme } from '../../../theme/Theme';
+import { red } from '@mui/material/colors';
 
 interface Props {
     title: string
@@ -13,6 +14,7 @@ interface Props {
     noStar?: number
     trailLabel?: string
     id: number
+    img: String
 }
 
 export default function BookListItem(props: Props) {
@@ -29,7 +31,7 @@ export default function BookListItem(props: Props) {
                 </Box>
             } sx={{ bgcolor: '#5457540a' }} className="book-list-item">
                 <ListItemAvatar>
-                    <Avatar alt="Boys over flower" src="/static/book-adv/m1.png" variant="rounded" sx={{ width: 60, height: 60 }} />
+                    <Avatar alt={props.title} src={`/uploads/${props.img}`} variant="rounded" sx={{ width: 60, height: 60 }} />
                 </ListItemAvatar>
                 <ListItemText sx={{ px: 2 }}>
                     <Typography variant="subtitle2" sx={{fontSize: 14 ,display: "flex", alignItems: 'center', color: theme.palette.secondary.main }} gutterBottom>

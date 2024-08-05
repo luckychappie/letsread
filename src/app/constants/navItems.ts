@@ -5,15 +5,18 @@ export const navItems = [
     // },
     {
         title: 'Share New Book',
-        link: '/pages/book/createBook'
+        link: '/pages/book/createBook',
+        icon: 'home'
     },
     {
         title: 'Search Books',
-        link: '/'
+        link: '/',
+        icon: "search"
     },
     {
         title: 'Contact us',
-        link: '/pages/contact'
+        link: '/pages/contact',
+        icon: "message"
     },
 
 ];

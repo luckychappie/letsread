@@ -7,6 +7,7 @@ import { CloudUpload } from '@mui/icons-material';
 import { Author, Category } from '@/app/types/book';
 import { useRouter } from 'next/navigation';
 import * as Yup from 'yup';
+import { useContextProvider } from '@/app/context/ContextProvider';
 
 export interface CategoryApiResponse {
     categories: Category[]
@@ -33,6 +34,7 @@ const VisuallyHiddenInput = styled('input')({
 });
 
 export default function CreateBook() {
+    const {setShowSnackbar, setSnackbarMessage} = useContextProvider()
     const router = useRouter()
     const [categories, setCategories] = useState<Category[]>([])
     const [authors, setAuthors] = useState<Author[]>([])
@@ -178,12 +180,12 @@ export default function CreateBook() {
                     throw new Error('Failed to update')
                 }
                 setLoading(false)
-                await setOpen(true)
-                setInterval(() => {
-                    router.refresh()
-                    router.push("/")
-                }, 3000)
-
+                setSnackbarMessage('Your book was submitted successfully')
+                setShowSnackbar(true)
+               
+                router.refresh()
+                router.push("/")
+                
             } catch {
                 console.log('error')
             }
